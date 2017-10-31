@@ -1,0 +1,20 @@
+<h1>Listing articles</h1>
+
+<%= link_to 'New article', new_article_path %>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Text</th>
+    </tr>
+
+    <% @articles.each do |article| %>
+        <tr>
+            <td><%= article.title %></td>
+            <td><%= article.text %></td>
+            <!-- link_to 方法是 Rails 内置的视图辅助方法之一. 用于创建基于链接文件和地址的超链接. -->
+            <td><%= link_to 'Show', article_path(article) %></td>
+        </tr>
+    <% end %>
+
+</table>
