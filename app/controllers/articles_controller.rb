@@ -13,6 +13,10 @@ class ArticlesController < ApplicationController
         @article = Article.new
     end
     
+    def edit
+        @article = Article.find(params[:id])
+    end
+    
     def create
         # 要求 参数 article 在控制器中使用. 允许的字段 title, text
         @article = Article.new(article_params)
