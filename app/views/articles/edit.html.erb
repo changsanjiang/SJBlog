@@ -1,36 +1,7 @@
 
 <h1>Edit article</h1>
-<!-- form_for 辅助方法的第一个参数可以是对象, 例如: @article, form_for 辅助方法会用这个对象的字段来填充表单. 如果传入和实例变量(@article)同名的符号(:article), 也会自动产生相同效果, 下面的代码就是使用的符号 -->
-<%= form_for(@article) do |f| %>
 
-    <% if @article.errors.any? %>
-        <div id="error_explanation">
-            <h2>
-                <%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:
-            </h2>
-            <ul>
-                <% @article.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-
-    <p>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-    </p>
-
-    <p>
-        <%= f.label :text %><br>
-        <%= f.text_area :text %>
-    </p>
-
-    <p>
-        <%= f.submit %>
-    </p>
-
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Back', articles_path %>
 

@@ -35,6 +35,27 @@ class ArticlesController < ApplicationController
 #        render plain: params[:article].inspect
     end
     
+    # update 动作用于更新已有记录, 他接受一个散列作为参数, 散列中包含想要更新的属性.
+    # 如果更新文章时发生错误, 就需要把表单再次显示给用户
+    def update
+        @article = Article.find(params[:id])
+        
+        if @article.update(article_params)
+            # redirect 重定向. 将页面重定向到 show 动作.
+            redirect_to @article
+        else
+            # 如果更新文章发生错误, 就需要把表单再次显示给用户
+            render 'edit'
+        end
+    end
+    
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
+        
+        redirect_to articles_path
+    end
+    
     private
     
     def article_params
