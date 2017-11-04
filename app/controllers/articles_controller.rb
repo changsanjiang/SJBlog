@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+
     def index
         @articles = Article.all
     end
@@ -7,7 +9,7 @@ class ArticlesController < ApplicationController
     def show
         @article = Article.find(params[:id])
     end
-    
+
     def new
         # 重新赋值, 清空数据
         @article = Article.new
